@@ -21,11 +21,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-<<<<<<< HEAD
-  color: red;
-=======
-  color: blue;
->>>>>>> a0caf33b36366f698393aceddccd739172b7d4f7
+  color:blue
 }
 
 .App-link {
