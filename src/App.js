@@ -10,6 +10,10 @@ function App() {
           Edit <code>src/App.js</code>.
         </p>
         <h1>This is Vaibhav</h1>
+
+        <h3>Slider</h3>
+        <h2>Adding Feature</h2>
+
         <a
           className="App-link"
           href="https://reactjs.org"
