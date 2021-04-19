@@ -22,15 +22,11 @@ jobs:
     - name: Build page
       run: npm run build
     - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@master
-      with:
-       host: ${{ secrets.SERVER }}
-       username: ${{ secrets.USERNAME }}
-       key: ${{ secrets.KEY }}
-       port: ${{ secrets.PORT }}
-       script: |
-        cd /home/ubuntu/vaibhavreact
-        git pull origin main
-        git status
-        
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY }}
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.SERVER }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: "/home/ubuntu"
    
