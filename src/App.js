@@ -10,16 +10,7 @@ function App() {
           Edit <code>src/App.js</code>.
         </p>
         <h1>This is Vaibhav</h1>
-
-        <h3>Slider</h3>
-        <h2>Adding Feature</h2>
-        <h3>Vaibhav Changes</h3>
-        <h1>Xeniapp</h1>
-
-        <p>this is vaibhav</p>
-
-        <h5>Xeniapp5</h5>
-        <p>test</p>
+        <h2>Learning New Things</h2>
 
         <a
           className="App-link"

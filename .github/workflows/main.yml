@@ -3,10 +3,12 @@ on:
  push:
   branches:
       - master
+      - staging
 jobs:
 
   build:
     name: Build
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -25,8 +27,22 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
           SSH_PRIVATE_KEY: ${{ secrets.KEY1 }}
-          SOURCE: "./build"
+          SOURCE: "./build/*"
           REMOTE_HOST: ${{ secrets.SERVER }}
           REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: "/home/ubuntu"
-   
+          TARGET: "/var/www/html"
+  push:
+    name: push
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: appleboy/ssh-action@master
+      with:
+       host: ${{ secrets.SERVER }}
+       username: ${{ secrets.USERNAME }}
+       key: ${{ secrets.KEY1 }}
+       port: ${{ secrets.PORT }}
+       script: |
+        cd /home/ubuntu/vaibhavreact
+        git pull origin main
+        git status
