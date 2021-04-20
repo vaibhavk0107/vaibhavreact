@@ -12,6 +12,7 @@ function App() {
         <h1>This is Vaibhav</h1>
 
         <h2>Learning New Things</h2>
+        <h3>Sachin</h3>
 
         <a
           className="App-link"
