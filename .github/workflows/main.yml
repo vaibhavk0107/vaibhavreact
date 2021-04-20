@@ -32,7 +32,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: "/var/www/html"
   
- push:
+push:
     name: Build
     if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
