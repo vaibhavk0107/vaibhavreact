@@ -13,7 +13,7 @@ function App() {
 
         <h3>Slider</h3>
         <h2>Adding Feature</h2>
-
+        <h3>Vaibhav Changes</h3>
         <a
           className="App-link"
           href="https://reactjs.org"

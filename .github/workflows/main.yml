@@ -8,15 +8,25 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
     steps:
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@master
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
       with:
-       host: ${{ secrets.SERVER }}
-       username: ${{ secrets.USERNAME }}
-       key: ${{ secrets.KEY }}
-       port: ${{ secrets.PORT }}
-       script: |
-        cd /home/ubuntu/vaibhavreact
-        git pull origin main
-        git status
+        node-version: ${{ matrix.node-version }}
+    - name: Install Packages
+      run: npm install 
+    - name: Build page
+      run: npm run build
+    - name: executing remote ssh commands using ssh key
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.KEY1 }}
+          SOURCE: "./build"
+          REMOTE_HOST: ${{ secrets.SERVER }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: "/home/ubuntu"
+   
